@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lusitana:wght@400;700&display=swap');
+@import "tailwindcss";
+
+
+@theme{
+  --font-dmsans: "DM Sans", sans-serif;
+  --font-lusitana: "Lusitana", sans-serif;
+
+  --color-beige: #ECEDE8;
+  --color-darkpurple: #29292F;
+  --color-lowopacity: #29292F73;
+}
