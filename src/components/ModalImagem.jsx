@@ -1,11 +1,11 @@
-export const ModalImagem = () => {
+export const ModalImagem = ({ imagem }) => {
   return(
     <div className="absolute lg:size-2/6 font-dmsans top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/1 hidden">
       <div className="">
         <img 
-          src="./assets/imagem.jpg" 
+          src={imagem} 
           alt="" 
-          className="min-w-full rounded-t-2xl aspect-square object-cover" 
+          className="min-w-full rounded-t-2xl aspect-square object-cover"
         />
       </div>
 

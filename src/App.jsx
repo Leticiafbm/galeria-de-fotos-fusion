@@ -25,8 +25,6 @@ export const App = () => {
     fetchProcesso()
   }, []);
 
-  console.log(urlsImagens)
-
   return(
     <main className="w-screen h-full bg-beige flex flex-col gap-12 relative">
       <header className="lg:hidden">

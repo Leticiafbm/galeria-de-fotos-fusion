@@ -1,4 +1,4 @@
-export const SectionFotos = ({ urlsImagens }) => {
+export const SectionFotos = ({ urlsImagens, onClick }) => {
   return(
     <section className="border-t-2 border-darkpurple flex flex-col gap-16">
       <div className="h-0.5 w-12 bg-darkpurple mt-1 self-end"></div>
@@ -6,7 +6,7 @@ export const SectionFotos = ({ urlsImagens }) => {
       <article className="grid grid-cols-1 size-5/6 self-center lg:grid-cols-3 lg:gap-x-12 lg:size-6/6 gap-y-10">
 
         {urlsImagens.map((url, index) => (
-          <div key={index} className="relative group">
+          <div key={index} className="relative group" onClick={onClick}>
           <img 
             src="./assets/icon-favorito-ativo.svg" 
             alt="favoritar" 
@@ -15,7 +15,7 @@ export const SectionFotos = ({ urlsImagens }) => {
           <img 
             src={url} 
             alt="imagem" 
-            className="rounded-4xl lg:aspect-[3/2] lg:object-cover lg:cursor-pointer" 
+            className="rounded-2xl lg:aspect-[3/2] lg:object-cover lg:cursor-pointer" 
           />
         </div>
         ))}
