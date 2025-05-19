@@ -1,6 +1,6 @@
 export const Sidebar = () => {
   return(
-    <aside className="bg-darkpurple fixed top-0 left-0 h-screen w-1/7 p-6 flex flex-col gap-42">
+    <aside className="bg-darkpurple fixed top-0 left-0 h-screen w-1/7 p-8 flex flex-col gap-42">
       <div className="w-full h-1/6 flex items-center justify-center">
         <img 
           src="./assets/galeria-logo.svg" 
