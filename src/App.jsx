@@ -18,16 +18,14 @@ export const App = () => {
     async function fetchProcesso(){
       const dados = await fetchResposta("https://picsum.photos/v2/list");
 
-      const idsImagens = dados[0].id;
-      const largurasImagens = dados[0].width;
-      const alturasImagens = dados[0].height;
-      const urlsImagens = dados[0].url;
-      setUrlsImagens(urlsImagens)
-      const downloadUrlsImagens = dados[0].download_url;
+      const srcs = dados.map(src => src.download_url)
+      setUrlsImagens(srcs)
     }
 
     fetchProcesso()
   }, []);
+
+  console.log(urlsImagens)
 
   return(
     <main className="w-screen h-full bg-beige flex flex-col gap-12 relative">
