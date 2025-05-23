@@ -25,7 +25,7 @@ export const ModalImagem = ({ abrir, onFechar, item }) => {
         <div className="bg-beige rounded-b-2xl p-4 flex flex-col gap-4">
           <div className="flex gap-2">
             <img
-              src="./assets/icon-user.svg"
+              src="/icon-user.svg"
               alt=""
               className="size-10"
             />
@@ -35,7 +35,7 @@ export const ModalImagem = ({ abrir, onFechar, item }) => {
 
           <div className="flex gap-2">
             <img
-              src="./assets/icon-dimensao.svg"
+              src="/icon-dimensao.svg"
               alt=""
               className="size-10"
             />
@@ -47,7 +47,7 @@ export const ModalImagem = ({ abrir, onFechar, item }) => {
             <button onClick={onFechar} className="bg-darkpurple flex justify-center items-center px-5 rounded-lg gap-2 cursor-pointer">
               <p className="text-beige text-xl">Fechar</p>
               <img
-                src="./assets/icon-fechar.svg"
+                src="/icon-fechar.svg"
                 alt=""
                 className="size-6"
               />
@@ -55,7 +55,7 @@ export const ModalImagem = ({ abrir, onFechar, item }) => {
 
             <button className="cursor-pointer">
               <img
-                src="./assets/icon-favorito-ativo.svg"
+                src="/icon-favorito-ativo.svg"
                 alt=""
                 className="bg-lowopacity p-3 rounded-full size-14.5"
               />

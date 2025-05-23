@@ -8,7 +8,7 @@ export const SectionFotos = ({ urlsImagens, onAbrir, id }) => {
         {urlsImagens.map((url, index) => (
           <div key={index} className="relative group" onClick={() => onAbrir(id[index])}>
           <img 
-            src="./assets/icon-favorito-ativo.svg" 
+            src="/icon-favorito-ativo.svg" 
             alt="favoritar" 
             className="absolute bg-lowopacity p-3 rounded-full size-14.5 right-3 top-3 lg:cursor-pointer lg:hover:size-16 lg:transition-all lg:" 
           />
