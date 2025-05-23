@@ -3,6 +3,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Header } from "./components/Header";
 import { SectionFiltrar } from "./components/SectionFiltrar";
 import { SectionFotos } from "./components/SectionFotos";
+import { SectionFavoritos } from "./components/SectionFavoritos";
 import { ModalImagem } from "./components/ModalImagem";
 
 export const App = () => {
@@ -14,10 +15,25 @@ export const App = () => {
   const [autor, setAutor] = useState([]);
   const [idSelecionado, setIdSelecionado] = useState(null);
 
+  const [secaoVisivel, setSecaoVisivel] = useState("galeria");
   const [favoritos, setFavoritos] = useState(() => {
     const favoritosSalvos = localStorage.getItem("favoritos");
     return favoritosSalvos ? JSON.parse(favoritosSalvos) : [];
   });
+
+  useEffect(() => {
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }, [favoritos]);
+
+  function toggleFavorito(id) {
+    setFavoritos(prev => 
+      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
+    );
+  }
+
+  const favoritosDetalhados = favoritos
+    .map(favId => getById(favId))
+    .filter(Boolean);
 
 
   useEffect(() => {
@@ -54,6 +70,7 @@ export const App = () => {
 
     if (indice !== -1){
       return {
+        id: id[indice],
         src: urlsImagens[indice],
         largura: largura[indice],
         altura: altura[indice],
@@ -71,25 +88,44 @@ export const App = () => {
       </header>
 
       <aside className="hidden lg:block">
-        <Sidebar />
+        <Sidebar 
+          secaoVisivel={secaoVisivel}
+          setSecaoVisivel={setSecaoVisivel}
+        />
       </aside>
 
       <section className="p-6 flex flex-col gap-3 lg:pr-22 lg:pl-84 lg:pt-20">
         <SectionFiltrar />
-        <SectionFotos 
-          onAbrir={(idSelecionado) => {
-            setIdSelecionado(idSelecionado);
-            setAbrir(true);
-          }}
-          urlsImagens={urlsImagens}
-          id={id}
-        />
+
+        {secaoVisivel === "galeria" && (
+          <SectionFotos 
+            onAbrir={(idSelecionado) => {
+              setIdSelecionado(idSelecionado);
+              setAbrir(true);
+            }}
+            urlsImagens={urlsImagens}
+            id={id}
+            favoritos={favoritos}
+          />
+        )}
+        
+        {secaoVisivel === "favoritos" && (
+          <SectionFavoritos 
+            favoritosDetalhados={favoritosDetalhados}
+            setAbrir={(idSelecionado) => {
+              setIdSelecionado(idSelecionado);
+              setAbrir(true);
+            }}
+          />
+        )}
       </section>
 
       <ModalImagem 
         abrir={abrir}
         onFechar={() => setAbrir(false)}
         item={getById(idSelecionado)}
+        isFavorito={favoritos.includes(idSelecionado)}
+        onToggleFavorito={() => toggleFavorito(idSelecionado)}
       />
     </main>
   );

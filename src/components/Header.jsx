@@ -10,21 +10,21 @@ export const Header = () => {
       </div>
 
       <div className="flex gap-3.5">
-        <a href="" className="flex">
+        <button className="flex">
           <img 
             src="/icon-galeria.svg"
             alt="link para galeria" 
             className="size-8 self-center" 
           />
-        </a>
+        </button>
 
-        <a href="" className="flex">
+        <button className="flex">
           <img 
             src="/icon-favorito.svg"
             alt="link para favoritos" 
             className="size-8 self-center" 
           />
-        </a>
+        </button>
       </div>
     </header>
   );

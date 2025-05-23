@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const ModalImagem = ({ abrir, onFechar, item }) => {
+export const ModalImagem = ({ abrir, onFechar, item, isFavorito, onToggleFavorito }) => {
   if (!item) return null;
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export const ModalImagem = ({ abrir, onFechar, item }) => {
     } else {
       document.body.style.overflow = ""
     }
-  })
+  }, [abrir]);
 
   return (
     <div onClick={onFechar} className={`lg:size-2/8 font-dmsans fixed top-1/3 left-1/2 -translate-x-1/3 -translate-y-1/1 ${abrir ? "visible" : "invisible bg-black/20"}`}>
@@ -48,16 +48,16 @@ export const ModalImagem = ({ abrir, onFechar, item }) => {
               <p className="text-beige text-xl">Fechar</p>
               <img
                 src="/icon-fechar.svg"
-                alt=""
+                alt="fechar"
                 className="size-6"
               />
             </button>
 
-            <button className="cursor-pointer">
+            <button onClick={onToggleFavorito} className="cursor-pointer">
               <img
-                src="/icon-favorito-ativo.svg"
-                alt=""
-                className="bg-lowopacity p-3 rounded-full size-14.5"
+                src={isFavorito ? "/icon-favorito.svg" : "/icon-favorito-ativo.svg"}
+                alt="favoritar"
+                className={`p-3 rounded-full size-14.5 ${isFavorito ? "bg-white" : "bg-lowopacity"}`}
               />
             </button>
           </div>
