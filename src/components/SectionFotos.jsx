@@ -1,12 +1,12 @@
-export const SectionFotos = ({ urlsImagens, onClick }) => {
+export const SectionFotos = ({ urlsImagens, onAbrir, id }) => {
   return(
     <section className="border-t-2 border-darkpurple flex flex-col gap-16">
       <div className="h-0.5 w-12 bg-darkpurple mt-1 self-end"></div>
 
-      <article className="grid grid-cols-1 size-5/6 self-center lg:grid-cols-3 lg:gap-x-12 lg:size-6/6 gap-y-10">
+      <article id={id} className="grid grid-cols-1 size-5/6 self-center lg:grid-cols-3 lg:gap-x-12 lg:size-6/6 gap-y-10" >
 
         {urlsImagens.map((url, index) => (
-          <div key={index} className="relative group" onClick={onClick}>
+          <div key={index} className="relative group" onClick={() => onAbrir(id[index])}>
           <img 
             src="./assets/icon-favorito-ativo.svg" 
             alt="favoritar" 
