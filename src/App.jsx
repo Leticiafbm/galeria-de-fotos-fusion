@@ -13,13 +13,28 @@ export const App = () => {
   const [altura, setAltura] = useState([]);
   const [largura, setLargura] = useState([]);
   const [autor, setAutor] = useState([]);
+  const [autorUnico, setAutorUnico] = useState([]);
   const [idSelecionado, setIdSelecionado] = useState(null);
+
+  const [autorSelecionado, setAutorSelecionado] = useState("todos");
 
   const [secaoVisivel, setSecaoVisivel] = useState("galeria");
   const [favoritos, setFavoritos] = useState(() => {
     const favoritosSalvos = localStorage.getItem("favoritos");
     return favoritosSalvos ? JSON.parse(favoritosSalvos) : [];
   });
+
+  const imagensFiltradas = urlsImagens
+  .map((src, index) => ({
+    id: id[index],
+    src,
+    autor: autor[index],
+    largura: largura[index],
+    altura: altura[index]
+  }))
+  .filter((imagem) => 
+    autorSelecionado === "todos" || imagem.autor === autorSelecionado
+  );
 
   useEffect(() => {
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
@@ -58,8 +73,11 @@ export const App = () => {
       const larguras = dados.map(largura => largura.width)
       setLargura(larguras)
 
-      const autores = dados.map(autor => autor.author)
+      const autores = dados.map(a => a.author)
       setAutor(autores)
+
+      const autoresUnicos = [...new Set(dados.map(item => item.author))];
+      setAutorUnico(autoresUnicos)
     }
 
     fetchProcesso()
@@ -95,7 +113,11 @@ export const App = () => {
       </aside>
 
       <section className="p-6 flex flex-col gap-3 lg:pr-22 lg:pl-84 lg:pt-20">
-        <SectionFiltrar />
+        <SectionFiltrar 
+          autorSelecionado={autorSelecionado}
+          aoSelecionarAutor={setAutorSelecionado}
+          listaAutores={autorUnico}
+        />
 
         {secaoVisivel === "galeria" && (
           <SectionFotos 
@@ -103,7 +125,7 @@ export const App = () => {
               setIdSelecionado(idSelecionado);
               setAbrir(true);
             }}
-            urlsImagens={urlsImagens}
+            imagem={imagensFiltradas}
             id={id}
             favoritos={favoritos}
           />
