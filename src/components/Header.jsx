@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Header = ({setSecaoVisivel}) => {
   return(
     <header className="bg-darkpurple w-full p-6 flex justify-between">
       <div className="">
@@ -10,7 +10,7 @@ export const Header = () => {
       </div>
 
       <div className="flex gap-3.5">
-        <button className="flex">
+        <button onClick={() => setSecaoVisivel("galeria")} className="flex">
           <img 
             src="/icon-galeria.svg"
             alt="link para galeria" 
@@ -18,7 +18,7 @@ export const Header = () => {
           />
         </button>
 
-        <button className="flex">
+        <button onClick={() => setSecaoVisivel("favoritos")} className="flex">
           <img 
             src="/icon-favorito.svg"
             alt="link para favoritos" 

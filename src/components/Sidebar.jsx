@@ -1,4 +1,4 @@
-export const Sidebar = ({setSecaoVisivel, secaoVisivel}) => {
+export const Sidebar = ({setSecaoVisivel}) => {
   return(
     <aside className="bg-darkpurple fixed top-0 left-0 h-screen w-1/7 p-8 flex flex-col gap-42">
       <div className="w-full h-1/6 flex items-center justify-center">

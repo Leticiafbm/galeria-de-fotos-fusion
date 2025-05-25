@@ -12,7 +12,7 @@ export const ModalImagem = ({ abrir, onFechar, item, isFavorito, onToggleFavorit
   }, [abrir]);
 
   return (
-    <div onClick={onFechar} className={`lg:size-2/8 font-dmsans fixed top-1/3 left-1/2 -translate-x-1/3 -translate-y-1/1 ${abrir ? "visible" : "invisible bg-black/20"}`}>
+    <div onClick={onFechar} className={`lg:size-2/8 font-dmsans fixed lg:top-1/3 lg:left-1/2 lg:-translate-x-1/3 lg:-translate-y-1/1 ${abrir ? "visible" : "invisible bg-black/20"}`}>
       <div onClick={e => e.stopPropagation()}>
         <div className="">
           <img

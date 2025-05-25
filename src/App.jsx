@@ -102,12 +102,13 @@ export const App = () => {
   return(
     <main className="w-screen h-full bg-beige flex flex-col gap-12">
       <header className="lg:hidden">
-        <Header />
+        <Header 
+          setSecaoVisivel={setSecaoVisivel}
+        />
       </header>
 
       <aside className="hidden lg:block">
         <Sidebar 
-          secaoVisivel={secaoVisivel}
           setSecaoVisivel={setSecaoVisivel}
         />
       </aside>
