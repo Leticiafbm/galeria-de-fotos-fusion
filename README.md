@@ -3,7 +3,7 @@
 Este é o segundo desafio técnico do projeto Front-End Fusion, que consiste na criação de uma galeria de fotos interativa utilizando React, consumo de API e boas práticas de desenvolvimento front-end.
 
 ## 🖼️ Preview  
-![Preview do site](/galeria-preview.png)
+![Preview do site](https://galeria-de-fotos-fusion.vercel.app/galeria-preview.png)
 
 ## 💡 Sobre o Projeto
 
